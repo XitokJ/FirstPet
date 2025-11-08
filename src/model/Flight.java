@@ -1,6 +1,8 @@
 package model;
 
-public class Flight
+import java.util.Scanner;
+
+public class Flight implements Comparable<Flight>
 {
     private int id;
     private String departureCity;
@@ -67,6 +69,20 @@ public class Flight
         this.price = price;
     }
 
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "id=" + id +
+                ", departureCity='" + departureCity + '\'' +
+                ", arrivalCity='" + arrivalCity + '\'' +
+                ", dateTime='" + dateTime + '\'' +
+                ", availableSeats=" + availableSeats +
+                ", price=" + price +
+                '}';
+    }
 
-
+    @Override
+    public int compareTo(Flight o) {
+        return Double.compare(this.price,o.price);
+    }
 }
