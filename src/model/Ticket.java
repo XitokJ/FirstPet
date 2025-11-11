@@ -51,4 +51,8 @@ public class Ticket {
         this.passengerId = passengerId;
         this.seatNumber = seatNumber;
     }
+    public String toString()
+    {
+        return "Ваш билет: id- " + id + "flightId- " + flightId + "passengerId- " + passengerId + "seatNumber- " + seatNumber;
+    }
 }
