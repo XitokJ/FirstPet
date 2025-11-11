@@ -62,19 +62,7 @@ public class TicketService {
 
     public void checkFreeTickets(Flight flight)
     {
-        List<Ticket> newTicketList = new ArrayList<>();
-        for(Ticket ticket: tickets)
-        {
-            if (flight.getId() == ticket.getFlightId())
-                newTicketList.add(ticket);
-        }
-        if ((newTicketList.size() - flight.getAvailableSeats()) == 0)
-            System.out.println("Свободных мест нет");
-        else
-        {
-            int freeSeats = flight.getAvailableSeats() - newTicketList.size();
-            System.out.println("Свободных мест: " + freeSeats);
-        }
+        System.out.println("Кол-во мест на " + flight.getId() +"-рейсе: " + flight.getAvailableSeats());
     }
 
 }
