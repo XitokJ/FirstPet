@@ -20,6 +20,12 @@ public class TicketService {
 
     public void bookTicket(Flight flight, Passenger passenger, Scanner scanner)
     {
+        if(flight.getAvailableSeats() == 0)
+        {
+            System.out.println("На самолете нет больше мест :-( ");
+            return;
+        }
+
         if (flight.getAvailableSeats() > 0)
         {
             System.out.println("Введите номер места, которое хотите забронировать: ");
@@ -31,7 +37,7 @@ public class TicketService {
             }
             for (Ticket ticket1: tickets)
             {
-                if (ticket1.getSeatNumber() == seatNumber)
+                if (ticket1.getSeatNumber() == seatNumber && ticket1.getFlightId() == flight.getId())
                 {
                     System.out.println("Такое место занято");
                     return;
@@ -54,7 +60,7 @@ public class TicketService {
             {
                 System.out.println("Вы отменили билет");
                 flight.setAvailableSeats(flight.getAvailableSeats() + 1);
-                tickets.remove(ticket);
+                iterator.remove();
                 return;
             }
         }
