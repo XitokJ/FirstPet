@@ -11,6 +11,15 @@ public class Flight implements Comparable<Flight>
     private int availableSeats;
     private double price;
 
+    public int getMAX_SEATS() {
+        return MAX_SEATS;
+    }
+
+    private final int MAX_SEATS = availableSeats;
+
+    public Flight() {
+    }
+
     public int getId() {
         return id;
     }

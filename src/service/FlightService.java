@@ -12,8 +12,9 @@ public class FlightService {
 
     private ArrayList<Flight> flights = new ArrayList<>();
 
-    public void addFlight(Flight flight, Scanner scanner)
+    public void addFlight(Scanner scanner)
     {
+        Flight flight = new Flight();
         flight.setId(IdGenerator.nextId());
         System.out.println("Введите название города отправления: ");
         flight.setDepartureCity(scanner.nextLine());
