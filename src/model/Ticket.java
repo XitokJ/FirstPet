@@ -45,4 +45,10 @@ public class Ticket {
         this.passengerId = passengerId;
         this.seatNumber = seatNumber;
     }
+    public Ticket(int flightId,int passengerId, int seatNumber)
+    {
+        this.flightId = flightId;
+        this.passengerId = passengerId;
+        this.seatNumber = seatNumber;
+    }
 }
