@@ -1,6 +1,9 @@
 package model;
 
-public class Ticket {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Ticket implements Serializable {
     private int id;
     private int flightId;
     private int passengerId;
@@ -38,6 +41,18 @@ public class Ticket {
         this.seatNumber = seatNumber;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ticket ticket = (Ticket) o;
+        return id == ticket.id && flightId == ticket.flightId && passengerId == ticket.passengerId && seatNumber == ticket.seatNumber;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, flightId, passengerId, seatNumber);
+    }
 
     public Ticket(int id, int flightId, int passengerId, int seatNumber) {
         this.id = id;
