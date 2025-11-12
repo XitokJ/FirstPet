@@ -1,5 +1,6 @@
 package service;
 
+import Exceptions.NoSeatsException;
 import model.Flight;
 import model.Ticket;
 
@@ -9,13 +10,13 @@ import java.util.ArrayList;
 
 public class FileService {
 
-    public void saveFlightToFile(ArrayList<Flight> flights) throws FileNotFoundException {
+    public void saveFlightToFile(ArrayList<Flight> flights) throws FileNotFoundException, NoSeatsException {
         try(ObjectOutputStream ofs = new ObjectOutputStream(new FileOutputStream("Flight.txt")))
         {
                 ofs.writeObject(flights);
             System.out.println("Данные успешно записаны!");
         } catch (IOException e) {
-            System.out.println("Не удалось сохранить данные, ошибка: " + e.getMessage());
+            throw new NoSeatsException("Ошибка записи в файл");
         }
     }
 
@@ -31,8 +32,7 @@ public class FileService {
         return new ArrayList<>();
     }
 
-    public void saveTicketToFile(ArrayList<Ticket> tickets)
-    {
+    public void saveTicketToFile(ArrayList<Ticket> tickets) throws NoSeatsException {
         try(ObjectOutputStream ots = new ObjectOutputStream(new FileOutputStream("Ticket.txt")))
         {
             ots.writeObject(tickets);
@@ -40,7 +40,7 @@ public class FileService {
         }
         catch (Exception e)
         {
-            System.out.println("Ошибка загрузки данных о билете: " + e.getMessage());
+            throw new NoSeatsException("Ошибка записи в файл");
         }
     }
 

@@ -1,5 +1,6 @@
 package service;
 
+import Exceptions.NoSeatsException;
 import model.Flight;
 import model.Passenger;
 import model.Ticket;
@@ -18,12 +19,10 @@ public class TicketService {
         tickets = new ArrayList<>();
     }
 
-    public void bookTicket(Flight flight, Passenger passenger, Scanner scanner)
-    {
+    public void bookTicket(Flight flight, Passenger passenger, Scanner scanner) throws NoSeatsException {
         if(flight.getAvailableSeats() == 0)
         {
-            System.out.println("На самолете нет больше мест :-( ");
-            return;
+            throw new NoSeatsException("На самолете нет больше мест :-( ");
         }
 
         if (flight.getAvailableSeats() > 0)
@@ -32,15 +31,13 @@ public class TicketService {
             int seatNumber = scanner.nextInt();
             if (seatNumber < 1 || seatNumber > flight.getMAX_SEATS())
             {
-                System.out.println("Неправильно выбрано место");
-                return;
+                throw new NoSeatsException("Неправильно выбрано место");
             }
             for (Ticket ticket1: tickets)
             {
                 if (ticket1.getSeatNumber() == seatNumber && ticket1.getFlightId() == flight.getId())
                 {
-                    System.out.println("Такое место занято");
-                    return;
+                    throw new NoSeatsException("Такое место занято");
                 }
             }
             System.out.println("Вы забронировали: " + seatNumber +" место");
