@@ -1,8 +1,10 @@
 package model;
 
+import java.io.Serializable;
+import java.util.Objects;
 import java.util.Scanner;
 
-public class Flight implements Comparable<Flight>
+public class Flight implements Comparable<Flight>, Serializable
 {
     private int id;
     private String departureCity;
@@ -18,6 +20,20 @@ public class Flight implements Comparable<Flight>
     private final int MAX_SEATS = availableSeats;
 
     public Flight() {
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Flight flight = (Flight) o;
+        return id == flight.id && availableSeats == flight.availableSeats && Double.compare(price, flight.price) == 0 && MAX_SEATS == flight.MAX_SEATS && Objects.equals(departureCity, flight.departureCity) && Objects.equals(arrivalCity, flight.arrivalCity) && Objects.equals(dateTime, flight.dateTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, departureCity, arrivalCity, dateTime, availableSeats, price, MAX_SEATS);
     }
 
     public int getId() {
