@@ -32,7 +32,7 @@ public class Passenger
     }
 
 
-    public Passenger(int ID, String fullName, String passportNumber) {
+    public Passenger(int ID, String fullName) {
         this.ID = ID;
         this.fullName = fullName;
         this.passportNumber = passportNumber;

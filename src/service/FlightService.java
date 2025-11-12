@@ -11,6 +11,14 @@ import java.util.Scanner;
 public class FlightService {
 
     private ArrayList<Flight> flights = new ArrayList<>();
+    public ArrayList<Flight> getFlights() {
+        return flights;
+    }
+
+    public void setFlights(ArrayList<Flight> flights) {
+        this.flights = flights;
+    }
+
 
     public void addFlight(Scanner scanner)
     {

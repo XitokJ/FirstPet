@@ -18,6 +18,15 @@ public class TicketService {
     public TicketService() {
         tickets = new ArrayList<>();
     }
+    public ArrayList<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(ArrayList<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+
 
     public void bookTicket(Flight flight, Passenger passenger, Scanner scanner) throws NoSeatsException {
         if(flight.getAvailableSeats() == 0)
